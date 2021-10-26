@@ -7,23 +7,27 @@ class User:
 
     def make_deposit(self,ammount):
         self.account_balance += ammount
+        return self
 
     def make_withdrawal(self, ammount):
         self.account_balance -= ammount
+        return self
 
     def display_user_balance(self):
         print(f"User: {self.name}, Balance: ${self.account_balance}")
+        return self
 
     def transfer_money(self, ammount, User):
         self.account_balance -= ammount
         User.account_balance += ammount
+        return self
 
 
 guido = User("Guido van Rossum", "guido@python.com")
 monty = User("Monty Python", "monty@python.com")
 keanu = User("Keanu Reeves", "keanu@thematrix.com")
 
-guido.make_deposit(500)
+guido.make_deposit(500).make_deposit(100) #test return
 guido.make_deposit(400)
 guido.make_deposit(80)
 guido.make_withdrawal(350)
